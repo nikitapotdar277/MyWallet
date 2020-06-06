@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!-- 	<link rel="stylesheet" href="css/bootstrap.min.css">
+ -->	<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<title></title>
+	  <!-- <script src="https://cdn.anychart.com/js/8.0.1/anychart-core.min.js"></script>
+      <script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js"></script> -->
+     <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	 <div id="container" style="width: 100%; height: 100%"></div>
+	 <script type="text/javascript">
+	 	window.onload = function() {
+	 	
+ 	allexps = JSON.parse(localStorage.getItem("expenses"));
+	 	// console.log(allexps.length);
+	 		 	// console.log(allexps);	
+
+	 	for (var i = 0; i < allexps.length; i++) {
+	 		allexps[i].amount = parseInt(allexps[i].amount, 10);
+	 	}
+	 	
+	 	console.log(allexps);	
+ 		var totals = [];
+		totals = allexps;
+                           
+	 	for (var i = 0; i < totals.length; i++) {
+	 		for (var j = i+1; j < totals.length; j++) {
+	 			if (totals[i].category == allexps[j].category) {
+	 				totals[i].amount += totals[j].amount;
+	 				// pie.push(totals[i]);
+	 			}
+
+	 		}
+	 	}
+	 	// console.log(totals);
+
+
+	 	const data1 = totals.map(({date, category, amount}) => ({category,amount}));
+	 	// console.log(data);
+
+	 	data1.forEach(function() {
+	 		for (var i = 0; i < data1.length; i++) {
+	 			for (var j=i+1; j< data1.length; j++) {
+	 				if (data1[i].category == data1[j].category) {
+	 					delete data1[j].category;
+	 					delete data1[j].amount;
+	 				}
+	 			}
+	 		}
+	 	})
+
+	 	console.log(data1);
+
+	 	piec = [];
+
+	 	for (var i = 0; i < data1.length; i++) {
+	 		if (Object.keys(data1[i]).length != 0 ) {
+	 			piec.push(data1[i])
+	 		}
+
+	 	}
+
+	 	console.log(piec);
+	 	piekeys123 = [];
+	 	piekeys123 = piec;
+
+		const pie = piec.map(item => {
+  return { label: item.category, y: item.amount };
+});	 
+	 	console.log(pie);
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title: {
+		text: "Expenses"
+	},
+	data: [{
+		type: "pie",
+		startAngle: 240,
+		yValueFormatString: "##0.00'Rs",
+		indexLabel: "{label} {y}",
+		dataPoints: pie
+	}]
+});
+chart.render();
+
+}
+	 </script>
+	</head>
+	<body>
+		<div class="wrapper" class="container">
+		<div class="navbar">
+			<nav>
+			<a href="index.html"> ADD </a>
+			<a href="allexpenses.html"> ALL EXPENSES </a>
+			<a href="trends.html"> TRENDS </a>
+			</nav>
+		</div>
+	</div>
+		<div id="chartContainer" style="height: 370px; max-width: 900px; margin-top: 100px;"></div>
+</body>
+</html>

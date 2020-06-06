@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+		MyWallet App
+	</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!-- 	<link rel="stylesheet" href="css/bootstrap.min.css">
+ -->	<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">	
+
+</head>
+<body>
+	<div class="wrapper" class="container">
+		<div class="navbar" style="float: right;" >
+			<nav>
+			<a href="index.html"> ADD </a>
+			<a href="allexpenses.html"> ALL EXPENSES </a>
+			<a href="trends.html"> TRENDS </a>
+			</nav>
+		</div>
+	</div>
+	<div class="main_content" class="container">
+			<h1 class="display-2 text-center" style="padding-left: 10%;"> MyWallet </h1>
+			<p class="lead text-center" style="padding-left: 10%;"> Welcome </p>
+			<div class="main_content" style="padding-left: 10%;">
+				<form id="form" class="col-lg-6 col-8 mx-auto" class="nvm">
+					<div class="form-group" class="container">
+						<div>Bill Name
+						<select id="billtype" class="input-group">
+							<option>Rent</option>
+							<option>Taxes</option>
+							<option>Utility bills</option>
+							<option>Insurance</option>
+							<option>Bank fees</option>
+							<option>Debt payment</option>
+							<option>Groceries</option>
+							<option>Personal care items</option>
+							<option>Medicines</option>
+							<option>Transportation</option>
+							<option>Shopping</option>	
+							<option>Eating out</option>
+							<option>Entertainment</option>
+							<option>Hobbies</option>			
+							<option>Hair care</option>
+						</select>
+						<br>
+						Bill Amount
+						<input id="amount" class="input-group" placeholder="Enter amount">
+
+						<br>
+						Date
+						<input id="date" class="input-group" type="date">
+
+						<br>
+						<span>
+							<button id="btn" type="button">Submit</button>
+						</span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="allexp.js"></script>
+</body>
+</html>
+
